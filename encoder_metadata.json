@@ -1,0 +1,16 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "model_license": "Apache-2.0",
+  "weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+  "dimension": 384,
+  "maximum_tokens": 192,
+  "normalization": "L2 before rounding",
+  "decimal_places": 6,
+  "text_count": 12457,
+  "device": "CPU",
+  "threads": 4,
+  "training_on_release": false,
+  "source_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+  "limits": "Long text is truncated by this fixed encoder; the full text remains supplied. Independent frozen inference only; no corpus-level fitting. Numerical replay may differ slightly across library/hardware versions."
+}

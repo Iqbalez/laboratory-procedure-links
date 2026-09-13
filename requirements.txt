@@ -1,2 +1,7 @@
-# Source extraction: Python 3.12.10 standard library only.
-# No pip packages, network calls, or model downloads are required by generate.py.
+# Python 3.12.10. Preparation and source extraction: standard library only.
+# Independent encoder reproduction only (not required by prepare.py):
+numpy==2.5.3
+torch==2.10.0
+sentence-transformers==3.4.1
+transformers==4.57.6
+# Pinned model revision and weights checksum: encoder_metadata.json.

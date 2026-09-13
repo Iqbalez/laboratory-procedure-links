@@ -1,3 +1,7 @@
+# Release 2.0.0
+
+Add deterministic remedy passage extraction, repeated-text consolidation retaining all original parent associations, and independently inferred fixed semantic vectors. Include pinned encoding code, model metadata and dependency versions in the raw upload. Base article extraction, CC BY4.0 rights and source records remain from1.0.2. No encoder weights or challenge-specific training outputs are published.
+
 # Changelog
 
 ## 1.0.0 ? 2026-09-13

@@ -1,18 +1,45 @@
 {
-  "version": "1.0.2",
-  "dataset": "Laboratory Procedure Links",
-  "data_license": "CC BY 4.0",
-  "code_license": "MIT",
-  "python": "3.12.10",
+  "version": "2.0.0",
+  "source_extraction_version": "1.0.2",
+  "raw_records": 604,
   "indexed_articles": 1000,
-  "included_articles": 604,
-  "source_files": {
-    "CHANGELOG.md": "dc01eadf5bb68480a5a0b13990da8bd1f293130783ee3ccce0a5a282460c1bc8",
-    "DATA_LICENSE.txt": "4d5c0b2932289e7c108b7193573d614d684d11c9fca0759eb1381be24d3167a0",
-    "generate.py": "e8fe8515a9b58ba1da49aeb071bd4b89da0ea1257fc4558f8405dad4a4b6766c",
+  "raw_hashes": {
+    "DATA_LICENSE.txt": "b3522e24cf3fdb82c44780c915f1bbca58c4d5def1f99c9fa6c8af49cf50280e",
     "LICENSE": "72e0b5323c491a38d5a98249a1a859bc853a4b5c814f4a0e35d7ff03992bd5bb",
-    "README.md": "e31abb440ba2030ec7647a8487b0e8ff270fff7cffc2b701a091685c54bad66f",
-    "requirements.txt": "fc72a698e76d9752b835b4ee3d46b677ff4464f39778e80a6882c5f575ec43f3",
-    "SOURCES.md": "6a5d1fa32d7313b69eaddda1b026b4ed07423aca0bfe137298e81140bac483b7"
-  }
+    "README.md": "336da11d3d2a8e0c1736001afd7f98432806618edf8fcb0540df62d76a4e8410",
+    "embeddings.jsonl": "16fab35c638f982c0e2ea8e78cbdf34f781943ffe502a32a3d1f2db262801fad",
+    "encode.py": "0e6aa47666d5b3eaf1ccef5e54511f1d6034ab5afdc67b41b7948791e514c7c7",
+    "encoder_metadata.json": "ca05af219ebc3985e625637ee84e72fb8ef83853fc32dbd23a172deb9251904c",
+    "generate.py": "e8fe8515a9b58ba1da49aeb071bd4b89da0ea1257fc4558f8405dad4a4b6766c",
+    "passages.py": "ba9fb61ed7c34c707ac170423348e0a40aa1abd999ae071e2a79cac64e43cc68",
+    "records.jsonl": "fa352b38afa7c02aa009d01540ca644fb278fb6eeecb9ecbca259919e8b37bcc",
+    "requirements.txt": "2e2a5e630685bf700498986c2b7bd1eb2d5ff8a51e11a4e45d32cce67b1112a9",
+    "source_index.json": "d8e4e060d900d921f2950d36bce5e752a56d8766909056b9c87a5a3202fef03e",
+    "source_report.json": "b99f70fbee60ac850152fc90baa6f34ebb7ddb42f124e9064470993675c61657"
+  },
+  "semantic_hashes": {
+    "records.jsonl": "6b3caee8b2a698d97967cf9757c8fdd57b16ce4e24c5a264e329e70685097df9",
+    "source_index.json": "b6f9a9cbeccd33be1a84f5aca51949945b48743cd50f48e6a85713aff36e8485",
+    "embeddings.jsonl": "53348f68411b1cb5d43b970ea5578cd93cecb31b0b11d9da1bd2033e5340cbc1"
+  },
+  "dataset_license": "CC BY4.0",
+  "code_license": "MIT",
+  "encoder_license": "Apache-2.0; weights not redistributed",
+  "encoder": {
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "model_license": "Apache-2.0",
+    "weights_sha256": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+    "dimension": 384,
+    "maximum_tokens": 192,
+    "normalization": "L2 before rounding",
+    "decimal_places": 6,
+    "text_count": 12457,
+    "device": "CPU",
+    "threads": 4,
+    "training_on_release": false,
+    "source_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+    "limits": "Long text is truncated by this fixed encoder; the full text remains supplied. Independent frozen inference only; no corpus-level fitting. Numerical replay may differ slightly across library/hardware versions."
+  },
+  "maximum_raw_fragments": 84
 }

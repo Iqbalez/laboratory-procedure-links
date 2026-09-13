@@ -1,33 +1,13 @@
-# Laboratory Procedure Links
+# Laboratory Procedure Links — release 2.0.0
 
-A derived collection of author-published laboratory method steps and troubleshooting notes. Each included article supplies its own problem descriptions, remedies, and explicit references to numbered method steps. The records support research on locating the procedural scope of existing troubleshooting guidance. They are not clinical recommendations, validated diagnoses, or instructions to perform an experiment safely.
+This derived collection retains 604 real CC BY4.0 STAR Protocols article records from the original frozen 1,000-entry Europe PMC census. Release 2.0.0 adds deterministic remedy-passage extraction and fixed per-text semantic vectors. No scientific prose or original problem/remedy association is generated. Sentence boundaries and list shuffling are benchmark transformations; the raw article text remains available to preparation.
 
-## Source and rights
+The raw upload has 13 root files: records.jsonl, source_index.json, source_report.json, generate.py, passages.py, encode.py, embeddings.jsonl, encoder_metadata.json, requirements.txt, RELEASE.json, DATA_LICENSE.txt, LICENSE and README.md. It does not contain prepared participant CSVs. Numerical author reference strings are retained in creator-side raw records and masked before participant use.
 
-The source is the CC BY 4.0 subset of STAR Protocols articles available as JATS XML through Europe PMC. Article-level XML permission statements are checked individually; an index claiming open access is insufficient. Copyright remains with the respective authors. The raw source_index.json retains the authors, article titles, DOI and publisher repository URL needed for attribution. Data is CC BY 4.0; extraction code is MIT. No figures, external supplementary files, third-party full texts, author emails or personal contact information are redistributed in the extracted records.
+Source extraction is version 1.0.2 and uses Python's standard library. Run generate.py against the retained Europe PMC search snapshot and XML files to replay source extraction. Then run encode.py --raw RAW_DIR --model-path LOCAL_MODEL_DIRECTORY with the pinned all-MiniLM-L6-v2 revision described in encoder_metadata.json. Encoding uses frozen CPU weights on each text independently. No training or corpus statistics use evaluation records. Archive requirements.txt pins the tested encoding dependencies. Source XML checksums are in records.jsonl; raw output hashes are in RELEASE.json. Exact preparation is offline and byte-deterministic from these uploaded files. Numerical encoding replay can differ slightly across libraries or hardware; preserved vectors are authoritative for preparation.
 
-## Release contents
+Data retains CC BY4.0 attribution to the source authors; code is MIT. The encoder's model card declares Apache-2.0; its weights are not redistributed here. Article source URLs and author credits are retained in source_index.json. The full source is documented at https://github.com/Iqbalez/laboratory-procedure-links . The upstream full-text service is https://europepmc.org/RestfulWebService and the encoder source is https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2 .
 
-Release 1.0.2 starts with a frozen 1,000-article metadata census. Of 999 successfully downloaded XML articles, 604 pass the extraction scope and article-license checks. The raw upload contains nine files: records.jsonl, source_index.json, source_report.json, generate.py, requirements.txt, RELEASE.json, DATA_LICENSE.txt, LICENSE and README.md. The source_report.json records every excluded article and reason. The source_index.json includes metadata used to connect author groups, including metadata for articles excluded from the modeling records.
+Intended use: supplied-data research on recovering the original problem-heading associations of detached troubleshooting passages. Known limitations: one English journal; extracted methods rather than full articles; absent figure images and introductory/resource material; sentence splitting can retain abbreviations or join short units; fixed encoder truncates long input to192 tokens although full text is retained; annotations measure original document associations, not clinical diagnoses or causal validity. Repeated text within an article is consolidated while retaining all original problem associations. Complete author components are kept apart by preparation. Public-source lookup must be prohibited in evaluation because original associations are available in the articles. This is not a clinical advice or safety-certification dataset.
 
-records.jsonl stores one extracted article per line, with article_id, title, xml_sha256, numbered steps, and original problem/remedy cards. Targets are not invented: downstream preparation parses the author's step references. The generator does not assign train/test membership. The separate prepare.py creates participant data and private answer files from these raw inputs.
-
-This public repository contains only eight source, license and documentation files. It does not contain the frozen article records, challenge answers, split membership, or learned checkpoints. Its purpose is to document the derived dataset and make its extraction procedure inspectable.
-
-## Reproducing the source extraction
-
-Use Python 3.12 and the standard library. Acquire an eligible Europe PMC core-search index and the corresponding fullTextXML files under their article licenses. Run: python generate.py --xml-dir /path/to/xml --index /path/to/index.json --out /path/to/raw . Keep the downloaded source XML snapshots to verify their recorded SHA-256 values. A new query or changed source article can produce a different collection; exact release reproduction uses the retained snapshots, not an assumed immutable live API.
-
-## Intended use and limitations
-
-This is a closed-data text-retrieval research resource for mapping an existing troubleshooting note to the procedure stages it references. It does not generate fixes or certify their safety or effectiveness. Authors may cite an observation point, an upstream cause, a recovery action, or a range of steps. The annotations record those explicit references, not every medically or scientifically plausible connection. Top-level numbered steps include their lettered substeps. Articles with duplicate step numbering, unsupported method scope, or fewer than two usable cards are excluded. Some interpretation depends on figures or specialist background not supplied in the extracted text. The collection covers one English-language journal and is not representative of all laboratories. Source annotations are publicly recoverable outside a supplied-data-only evaluation setting.
-
-## Publication metadata
-
-See SOURCES.md for authoritative access endpoints and DATA_LICENSE.txt for data terms. RELEASE.json pins the extraction code and documented release counts. CHANGELOG.md records the release history.
-
-Published contact email addresses are redacted during extraction. R object-slot syntax is preserved. The records otherwise retain the extracted procedure and troubleshooting text; preparation separately removes answer-bearing references and URLs.
-
-Release 1.0.1 preserves adjacent inline XML text, keeps block boundaries separate, and recognizes spaced lettered substeps and common conjunctions in numerical reference lists. Bibliographic citation markers remain separated from procedure numbers.
-
-Release 1.0.2 also expands numerical ranges written with through or a repeated step word.
+The public source repository contains 11 code, license and metadata files. It excludes records.jsonl, source_index.json, source_report.json, embeddings.jsonl, prepared data, answers and split membership. The 13-file raw upload described above is supplied separately to creator-side preparation.
