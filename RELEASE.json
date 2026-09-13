@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dataset": "Laboratory Procedure Links",
   "data_license": "CC BY 4.0",
   "code_license": "MIT",
@@ -7,11 +7,11 @@
   "indexed_articles": 1000,
   "included_articles": 604,
   "source_files": {
-    "CHANGELOG.md": "6bccf587f7eee5aa5eff39b47b186be9cfd86f9111fc49557f58a602805aa672",
+    "CHANGELOG.md": "646f3dc914a881a9f26147b0feaf72f79d82ea1edd666098abbdfa6318b4eaaa",
     "DATA_LICENSE.txt": "4d5c0b2932289e7c108b7193573d614d684d11c9fca0759eb1381be24d3167a0",
-    "generate.py": "57346b5ded5e0fac38ce5eaa03ee1f094d12c3f00939b24b829de465156359cf",
+    "generate.py": "6d72afbf01e7a237e41c04270009e674154db9293d50b70f1da988cbc97b165f",
     "LICENSE": "72e0b5323c491a38d5a98249a1a859bc853a4b5c814f4a0e35d7ff03992bd5bb",
-    "README.md": "5bb7b2e48552d58b90f392a55700054d62124df25b6013ff05f00b615a3c2085",
+    "README.md": "75741aab08c5d1837323752af297d4de93bec4990e8312d230b757228c0c7717",
     "requirements.txt": "fc72a698e76d9752b835b4ee3d46b677ff4464f39778e80a6882c5f575ec43f3",
     "SOURCES.md": "6a5d1fa32d7313b69eaddda1b026b4ed07423aca0bfe137298e81140bac483b7"
   }

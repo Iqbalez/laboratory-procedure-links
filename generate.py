@@ -13,12 +13,26 @@ import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-VERSION = '1.0.0'
-REFERENCE = re.compile(r'\bsteps?\s*#?\s*(\d{1,3}(?:[a-z]|\.[a-z])?(?:(?:\s*[-–−—]\s*|\s+to\s+|\s*,\s*(?:and\s+)?|\s+and\s+|\s*&\s*)\d{1,3}(?:[a-z]|\.[a-z])?)*)', re.I)
+VERSION = '1.0.1'
+DASH = r'[-\u2010-\u2015\u2212]'
+SUBSTEP = r'(?:(?:\.|' + DASH + r'|\s?)[a-z](?:[ivx]+)?(?![a-z])(?:' + DASH + r'[a-z](?:[ivx]+)?(?![a-z]))*)?'
+STEP_TOKEN = r'\d{1,3}' + SUBSTEP
+REFERENCE = re.compile(r'\bsteps?\s*#?\s*(' + STEP_TOKEN + r'(?:(?:\s*(?:' + DASH + r'|/)\s*|\s+to\s+|\s*,\s*(?:(?:and|or)\s+)?|\s+(?:and|or|und)\s+|\s+for\s+[A-Za-z :_-]{1,60}\s+and\s+|\s*&\s*)' + STEP_TOKEN + r')*)(?!\w)', re.I)
 BACK_REFERENCE = re.compile(r'\b(?:troubleshooting(?:\s*[-:–]?\s*problem)?|problems?)\s*#?\s*\d+(?:\s*(?:,|and|[-–])\s*\d+)*', re.I)
 
 def plain(element):
-    text = ' '.join(' '.join(element.itertext()).split()) if element is not None else ''
+    if element is None:
+        return ''
+    blocks = {'p', 'title', 'sec', 'list', 'list-item', 'label', 'table', 'tr', 'td', 'th',
+              'caption', 'preformat', 'code', 'disp-quote', 'break', 'br', 'fig'}
+    def render(node):
+        value = node.text or ''
+        for child in node:
+            value += render(child) + (child.tail or '')
+        if node.tag in blocks or (node.tag == 'xref' and node.get('ref-type') == 'bibr'):
+            return ' ' + value + ' '
+        return value
+    text = ' '.join(render(element).split())
     # Preserve R object-slot expressions, which resemble email addresses.
     return re.sub(r'[\w.+-]+@(?!meta\.data\b|active\.ident\b)[\w.-]+\.[A-Za-z]{2,}', '[contact removed]', text)
 
@@ -29,7 +43,7 @@ def reference_numbers(text):
     result = set()
     for match in REFERENCE.finditer(text):
         span = match.group(1)
-        for a, b in re.findall(r'(\d{1,3})[a-z]?(?:\.[a-z])?\s*(?:[-–−—]|to)\s*(\d{1,3})', span, re.I):
+        for a, b in re.findall(r'(\d{1,3})' + SUBSTEP + r'\s*(?:' + DASH + r'|to)\s*(\d{1,3})', span, re.I):
             if int(a) > int(b) or int(b) - int(a) > 200:
                 raise ValueError('Invalid step-reference range')
             result.update(range(int(a), int(b) + 1))
