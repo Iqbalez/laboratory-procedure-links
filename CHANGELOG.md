@@ -7,3 +7,7 @@ Initial derived collection. Article-level CC BY4 checks, exact numbered-referenc
 ## 1.0.1
 
 Correct inline XML text joining so adjacent formatting does not split step numbers. Recognize spaced substep letters and list conjunctions. The original 1.0.0 source commit and creator-side evidence remain archived.
+
+## 1.0.2
+
+Expand explicit through-ranges and repeated-step range endpoints. This repairs three training cards; evaluation article features and answers are unchanged.

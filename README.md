@@ -8,7 +8,7 @@ The source is the CC BY 4.0 subset of STAR Protocols articles available as JATS 
 
 ## Release contents
 
-Release 1.0.1 starts with a frozen 1,000-article metadata census. Of 999 successfully downloaded XML articles, 604 pass the extraction scope and article-license checks. The raw upload contains nine files: records.jsonl, source_index.json, source_report.json, generate.py, requirements.txt, RELEASE.json, DATA_LICENSE.txt, LICENSE and README.md. The source_report.json records every excluded article and reason. The source_index.json includes metadata used to connect author groups, including metadata for articles excluded from the modeling records.
+Release 1.0.2 starts with a frozen 1,000-article metadata census. Of 999 successfully downloaded XML articles, 604 pass the extraction scope and article-license checks. The raw upload contains nine files: records.jsonl, source_index.json, source_report.json, generate.py, requirements.txt, RELEASE.json, DATA_LICENSE.txt, LICENSE and README.md. The source_report.json records every excluded article and reason. The source_index.json includes metadata used to connect author groups, including metadata for articles excluded from the modeling records.
 
 records.jsonl stores one extracted article per line, with article_id, title, xml_sha256, numbered steps, and original problem/remedy cards. Targets are not invented: downstream preparation parses the author's step references. The generator does not assign train/test membership. The separate prepare.py creates participant data and private answer files from these raw inputs.
 
@@ -29,3 +29,5 @@ See SOURCES.md for authoritative access endpoints and DATA_LICENSE.txt for data 
 Published contact email addresses are redacted during extraction. R object-slot syntax is preserved. The records otherwise retain the extracted procedure and troubleshooting text; preparation separately removes answer-bearing references and URLs.
 
 Release 1.0.1 preserves adjacent inline XML text, keeps block boundaries separate, and recognizes spaced lettered substeps and common conjunctions in numerical reference lists. Bibliographic citation markers remain separated from procedure numbers.
+
+Release 1.0.2 also expands numerical ranges written with through or a repeated step word.
