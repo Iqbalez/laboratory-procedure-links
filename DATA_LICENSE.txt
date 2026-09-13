@@ -1,0 +1,4 @@
+Laboratory Procedure Links: CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+Source article copyright remains with each article's authors. Only articles whose own JATS permission statement grants CC BY 4.0 are used for extracted text. Author names, titles, DOI links and source URLs are retained in the raw source_index.json for attribution. The derived collection extracts, normalizes and reorganizes method and troubleshooting text; challenge preparation additionally removes cross-reference labels from participant queries. No source figures or external supplements are included. Dataset attribution and this notice must accompany redistribution through the dataset registration/materials. Extraction software is separately MIT licensed; its license does not relicense source text.

@@ -1,0 +1,2 @@
+# Source extraction: Python 3.12.10 standard library only.
+# No pip packages, network calls, or model downloads are required by generate.py.
